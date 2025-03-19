@@ -8,7 +8,7 @@ type Book = {
   publisher: string;
   publishDt: string;
   bookDetails: string;
-  thumbUrl: string;
+  thumbSeq: string;
   booksAmount: number;
   sellAmount: number;
 };
@@ -28,7 +28,7 @@ const initialBookState: Book = {
   publisher: "",
   publishDt: "",
   bookDetails: "",
-  thumbUrl: "",
+  thumbSeq: "",
   booksAmount: 0,
   sellAmount: 0,
 };
@@ -227,11 +227,11 @@ export default function BookModal({ isOpen, onClose, onSave, bookId, formData }:
               accept="image/*"
               required
             />
-            {(thumbnail || bookData.thumbUrl) && (
+            {(thumbnail || bookData.thumbSeq) && (
               <div className="mt-2">
                 {thumbnail && (<p>선택된 파일: {thumbnail.name})</p>)}
                 <img
-                  src={thumbnail ? URL.createObjectURL(thumbnail) : bookData.thumbUrl}
+                  src={thumbnail ? URL.createObjectURL(thumbnail) : `${process.env.NEXT_PUBLIC_API_URL}/downFiles/${bookData.thumbSeq}`}
                   alt="미리보기"
                   className="mt-2 max-h-40 rounded"
                 />

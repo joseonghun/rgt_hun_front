@@ -9,7 +9,7 @@ type Book = {
     publisher: string;
     publishDt: string;
     bookDetails: string;
-    thumbUrl: string;
+    thumbSeq: string;
     booksAmount: number;
     sellAmount: number;
 };
