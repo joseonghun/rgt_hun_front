@@ -16,7 +16,7 @@ type Book = {
 type BookModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (book: Book) => Promise<void>;
+  onSave: (book: Book, formData:FormData) => Promise<void>;
   bookId?: string;
   formData: FormData;
 };

@@ -17,6 +17,8 @@ type Book = {
 type BooksResponse = {
     list: Book[];
     responseMessage: string;
+    totalPages: number;
+    responseCode: number;
 };
 
 export default function BooksClient() {
@@ -67,6 +69,8 @@ export default function BooksClient() {
 
     // 페이지 네비게이션 처리
     const getPaginationRange = () => {
+        if(!data) return [];
+
         const range: number[] = [];
         const maxVisiblePages = 10;
 
@@ -233,7 +237,7 @@ export default function BooksClient() {
                 onClose={() => setIsModalOpen(false)}
                 onSave={handleSaveBook}
                 bookId={selectedBook}
-                formData={FormData}
+                formData={new FormData}
             />
         </>
     );
