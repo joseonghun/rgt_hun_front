@@ -225,7 +225,6 @@ export default function BookModal({ isOpen, onClose, onSave, bookId, formData }:
               onChange={handleFileChange}
               className="w-full p-2 border rounded"
               accept="image/*"
-              required
             />
             {(thumbnail || bookData.thumbSeq) && (
               <div className="mt-2">
