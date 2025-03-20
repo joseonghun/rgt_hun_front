@@ -113,6 +113,9 @@ export default function BooksClient() {
 
     // 도서 저장 처리 (추가 또는 업데이트)
     const handleSaveBook = async (book: Book, formData: FormData) => {
+        for (let pair of formData.entries()) {
+            console.log(pair[0], pair[1]);
+        }
         try {
             const url = `${process.env.NEXT_PUBLIC_API_URL}/books${book.id ? `/${book.id}` : ''}`;
             const method = book.id ? "PUT" : "POST";

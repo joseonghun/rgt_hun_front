@@ -102,13 +102,15 @@ export default function BookModal({ isOpen, onClose, onSave, bookId, formData }:
 
     // Book 객체의 모든 필드를 FormData에 추가
     Object.entries(bookData).forEach(([key, value]) => {
-      formData.append(key, value ? value.toString() : '');
+      if(key !== 'thumbnail') {
+        formData.append(key, value ? value.toString() : '');
+      }
     });
-
     // 썸네일 파일 추가
     if (thumbnail) {
       formData.append('thumbnail', thumbnail);
     }
+
     try {
       await onSave(bookData, formData);
       onClose();
