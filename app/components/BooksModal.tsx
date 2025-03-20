@@ -126,7 +126,7 @@ export default function BookModal({ isOpen, onClose, onSave, bookId, formData }:
       <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 h-[80%] overflow-y-auto">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold">
-            {bookId ? "도서 정보 편집" : "새 도서 추가"}
+            {bookId ? "도서 정보 상세" : "새 도서 추가"}
           </h2>
           <button
             onClick={onClose}
@@ -184,7 +184,6 @@ export default function BookModal({ isOpen, onClose, onSave, bookId, formData }:
               value={bookData.publisher}
               onChange={handleChange}
               className="w-full border rounded px-3 py-2"
-              required
             />
           </div>
 

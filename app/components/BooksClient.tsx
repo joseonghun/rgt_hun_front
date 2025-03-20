@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import BookModal from "./BooksModal";
 
 type Book = {
+    no: number;
     id: string;
     title: string;
     author: string;
@@ -178,10 +179,11 @@ export default function BooksClient() {
                     </button>
                 </form>
             </div>
-            <div className="grid grid-cols-6 gap-4 w-full border-y bg-gray-200 text-center p-2">
-                <div className="">제목</div>
-                <div className="">저자</div>
-                <div className="">출판사</div>
+            <div className="grid grid-cols-12 gap-4 w-full border-y bg-gray-200 text-center p-2">
+                <div className="">No.</div>
+                <div className="col-span-4">제목</div>
+                <div className="col-span-2">저자</div>
+                <div className="col-span-2">출판사</div>
                 <div className="">출간일</div>
                 <div className="">수량</div>
                 <div className="">제거</div>
@@ -255,10 +257,11 @@ function BooksList({ books, responseMessage, onEditBook, onDeleteBook }: BooksLi
         <>
             {books && books.length > 0 ? (
                 books.map((book) => (
-                    <div className="grid grid-cols-6 gap-4 w-full border-y border-gray-300 text-center p-2 hover:bg-gray-100 hover:cursor-pointer" key={book.id}>
-                        <div className="" onClick={() => onEditBook(book.id)}>{book.title}</div>
-                        <div className="" onClick={() => onEditBook(book.id)}>{book.author}</div>
-                        <div className="" onClick={() => onEditBook(book.id)}>{book.publisher}</div>
+                    <div className="grid grid-cols-12 gap-4 w-full border-y border-gray-300 text-center p-2 hover:bg-gray-100 hover:cursor-pointer" key={book.id}>
+                        <div className="" onClick={() => onEditBook(book.id)}>{book.no}</div>
+                        <div className="col-span-4 text-left" onClick={() => onEditBook(book.id)}>{book.title}</div>
+                        <div className="col-span-2" onClick={() => onEditBook(book.id)}>{book.author}</div>
+                        <div className="col-span-2" onClick={() => onEditBook(book.id)}>{book.publisher}</div>
                         <div className="" onClick={() => onEditBook(book.id)}>{book.publishDt}</div>
                         <div className="" onClick={() => onEditBook(book.id)}>{book.booksAmount}</div>
                         <div className="">
